@@ -1,10 +1,8 @@
-from datetime import datetime
 import csv
-
+from datetime import datetime
 from django.contrib.auth.models import User
-from django.shortcuts import render
 
-from .models import Game, Player
+from tennis.games.models import Player
 
 
 def parsing_tennis_rating():
@@ -38,9 +36,5 @@ def parsing_tennis_rating():
     pass
 
 
-def index(request):
-    games = Game.objects.filter(p1__user=request.user)
-    context = {'games': games}
+if __name__ == '__main__':
     parsing_tennis_rating()
-
-    return render(request, 'games/index.html', context)
