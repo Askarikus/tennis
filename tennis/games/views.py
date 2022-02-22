@@ -2,9 +2,9 @@ from datetime import datetime
 import csv
 
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .models import Game, Player
+from .models import Game, Player, Scores
 
 
 def parsing_tennis_rating():
@@ -38,9 +38,24 @@ def parsing_tennis_rating():
     pass
 
 
+def scores_to_db():
+    with open('../scores.csv') as sc:
+        for s in sc.readlines():
+            if not Scores.objects.filter(score=s.rstrip('\n')).exists():
+                score = Scores.objects.create(score=s.rstrip('\n'))
+                score.save()
+
+
 def index(request):
     games = Game.objects.filter(p1__user=request.user)
     context = {'games': games}
-    parsing_tennis_rating()
-
+    scores_to_db()
+    #parsing_tennis_rating()
     return render(request, 'games/index.html', context)
+
+
+def add_game(request):
+    if request.method == 'POST':
+        print('post')
+
+    return redirect('index')

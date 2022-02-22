@@ -29,4 +29,14 @@ class Game(models.Model):
                f'{self.p2.user.first_name} {self.p2.user.last_name} ' \
                f'{self.result_game}'
 
+    class Meta:
+        ordering: ['-date_game']
+
+
+class Scores(models.Model):
+    score = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.score
+
 
