@@ -6,7 +6,7 @@ from tennis.games.models import Player
 
 
 def parsing_tennis_rating():
-    """ Fuction fill players to base"""
+    """ Function fill players to base"""
     with open('../player_overviews_unindexed.csv') as f:
         f.readline()
         spamreader = csv.reader(f, delimiter=',', quotechar='"')
