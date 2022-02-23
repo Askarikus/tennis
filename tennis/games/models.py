@@ -20,14 +20,15 @@ class Game(models.Model):
                            related_name='p1')
     p2 = models.ForeignKey(to=Player, on_delete=models.PROTECT,
                            related_name='p2')
-    date_game = models.DateTimeField(default=now)
+    date_game = models.DateTimeField(auto_now_add=True)
     result_game = models.CharField(max_length=50)
+    surface = models.CharField(max_length=6)
     description = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
         return f'{self.p1.user.first_name} {self.p1.user.last_name} - ' \
                f'{self.p2.user.first_name} {self.p2.user.last_name} ' \
-               f'{self.result_game}'
+               f'{self.result_game} f{self.surface}'
 
     class Meta:
         ordering: ['-date_game']
