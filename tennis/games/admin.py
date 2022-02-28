@@ -11,4 +11,5 @@ class GamesAdmin(ModelAdmin):
 
 @admin.register(Game)
 class GamesAdmin(ModelAdmin):
+    list_per_page = 20
     pass

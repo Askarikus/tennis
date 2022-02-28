@@ -1,0 +1,24 @@
+{% extends 'admin/base.html' %}
+{%load static%}
+{% block branding %}
+
+<h1 id="head">
+  <img src="{% static 'img/logo.gif' %}" width="35" height="35" />
+  Tennis
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+  <link href="{% static 'css/admin.css'%}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <form action="{% url 'add_game' %}" method="POST" class="ml-sm-auto mt-3 mb-3">
+      {% csrf_token %}
+      <input
+      type="submit"
+      value="Fill database"
+      class="btn btn-primary ml-sm-auto mt-3 mb-3"
+      />
+  </form>
+{% endblock %}

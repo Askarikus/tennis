@@ -6,19 +6,37 @@
         user-select: none;
       }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+@media (min-width: 768px) {
+.bd-placeholder-img-lg {
+  font-size: 3.5rem;
+}
+}
 
 
-      .showPasswordToggle{
-        cursor:pointer;
-        transition:all;
-      }
+.showPasswordToggle{
+cursor:pointer;
+transition:all;
+}
 
 
-      .showPasswordToggle:hover{
-        transform:scale(1.2);
-      }
+.showPasswordToggle:hover{
+transform:scale(1.2);
+}
+
+.hard{
+    background-color: #3333cc;
+}
+
+.clay{
+    background-color: #e7860e;
+}
+
+.carpet{
+    background-color: #9fb71b;
+}
+
+.grass{
+    background-color: #33b71b;
+}
+
+
