@@ -17,7 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'django.contrib.sites',
+    'crispy_forms',
+
+    # 'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -26,7 +28,8 @@ INSTALLED_APPS = [
     'games',
 ]
 
-SITE_ID = 1
+# allauth stuff
+# SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -54,8 +57,6 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_ON_GET = True
 
-
-
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'SCOPE': [
@@ -66,6 +67,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# end allauth
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,3 +157,5 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT'))
+
+
