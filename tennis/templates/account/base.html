@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-  <head>
+<head>
     <title>{% block head_title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,25 +25,25 @@
     <link href="signin.css" rel="stylesheet">
     {% block extra_head %}
     {% endblock %}
-  </head>
-  <body>
+</head>
+<body>
 
-    {% block body %}
+{% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
+{% if messages %}
+<div>
+    <strong>Messages:</strong>
+    <ul>
         {% for message in messages %}
         <li>{{message}}</li>
         {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+    </ul>
+</div>
+{% endif %}
 
-    <div>
-      <strong>Menu:</strong>
-      <ul>
+<div>
+    <strong>Menu:</strong>
+    <ul>
         {% if user.is_authenticated %}
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
@@ -51,14 +51,14 @@
         <li><a href="{% url 'account_login' %}">Sign In</a></li>
         <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
-      </ul>
-    </div>
-    {% block content %}
-    {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
+    </ul>
+</div>
+{% block content %}
+{% endblock %}
+{% endblock %}
+{% block extra_body %}
+{% endblock %}
 
-  </body>
+</body>
 
 </html>

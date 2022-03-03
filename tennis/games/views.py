@@ -54,8 +54,8 @@ def index(request):
         Q(p1__user=request.user) | Q(p2__user=request.user)
     ).order_by('-date_game')
     context = {'games': games}
-    #scores_to_db()
-    #parsing_tennis_rating()
+    # scores_to_db()
+    # parsing_tennis_rating()
     return render(request, 'games/index.html', context)
 
 
@@ -89,5 +89,4 @@ def add_game(request):
             surface=surface
         )
         game.save()
-
     return redirect('index')
