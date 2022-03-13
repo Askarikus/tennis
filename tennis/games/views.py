@@ -1,8 +1,12 @@
 from random import choice
 
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import render, redirect
 
+from .forms import UserForm, PlayerForm
 from .models import Game, Player, Scores
 from .utils import who_winner_lottery
 
@@ -37,3 +41,26 @@ def add_game(request):
             surface=surface
         )
     return redirect('index')
+
+
+@login_required
+@transaction.atomic
+def profile(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        player_form = PlayerForm(request.POST, instance=request.user.player)
+        if user_form.is_valid() and player_form.is_valid():
+            user_form.save()
+            player_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        user_form = UserForm(instance=request.user)
+        player_form = PlayerForm(instance=request.user.player)
+
+    return render(request, 'games/player.html', {
+        'user_form': user_form,
+        'player_form': player_form
+    })

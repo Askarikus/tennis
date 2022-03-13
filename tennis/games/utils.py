@@ -39,7 +39,7 @@ def parsing_tennis_rating_to_db():
 
 
 def parsing_scores_to_db():
-    """ Finc fill scores to Scores model from csv"""
+    """ Func fill scores to Scores model from csv"""
     with open('./scores.csv') as sc:
         for s in sc.readlines():
             if not Scores.objects.filter(score=s.rstrip('\n')).exists():
