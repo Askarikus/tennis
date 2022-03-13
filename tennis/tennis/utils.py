@@ -38,8 +38,8 @@ from random import choice
 
 
 def scores():
-    with open('../../scores_tennis_matches.txt', 'r') as f,\
-                 open('../../scores.csv', 'w') as scores_m:
+    with open('../scores_tennis_matches.txt', 'r') as f,\
+                 open('../scores.csv', 'w') as scores_m:
         set_of_scores = set(f.readlines())
         for elem in set_of_scores:
             print(elem.rstrip('\n'), file=scores_m)

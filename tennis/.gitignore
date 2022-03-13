@@ -1,2 +1,5 @@
-.env
-.idea
+/player_overviews_unindexed.csv
+../.idea/
+/scores_tennis_matches.txt
+/scores.csv
+/.env

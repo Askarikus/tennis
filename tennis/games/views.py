@@ -1,53 +1,9 @@
-import csv
-from datetime import datetime
 from random import choice
 
-from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.views.generic.list import BaseListView
 
 from .models import Game, Player, Scores
-
-
-def parsing_tennis_rating():
-    """ Function fill players to base"""
-    with open('../player_overviews_unindexed.csv') as f:
-        f.readline()
-        spamreader = csv.reader(f, delimiter=',', quotechar='"')
-        for s in spamreader:
-            username = s[1]
-            if not User.objects.filter(username=username).exists():
-                first_name = s[2]
-                last_name = s[3]
-                user = User.objects.create(
-                    username=username,
-                    first_name=first_name,
-                    last_name=last_name
-                )
-                user.save()
-                birth_date = None
-                country = ''
-                if s[8]:
-                    birth_date = datetime.strptime(s[8], '%Y.%m.%d')
-                if s[7]:
-                    country = s[7].split(',')[-1]
-                player = Player.objects.create(
-                    user=user,
-                    birth_date=birth_date,
-                    country=country,
-                    pro=True
-                )
-                player.save()
-    pass
-
-
-def scores_to_db():
-    with open('../scores.csv') as sc:
-        for s in sc.readlines():
-            if not Scores.objects.filter(score=s.rstrip('\n')).exists():
-                score = Scores.objects.create(score=s.rstrip('\n'))
-                score.save()
 
 
 def index(request):
@@ -86,10 +42,8 @@ def add_game(request):
         game = Game.objects.create(
             p1=gamer,
             p2=choice_player,
-            result_game=choice_score,
+            result=choice_score,
             surface=surface
         )
-        game.save()
-    return redirect('index')
 
-BaseListView
+    return redirect('index')
