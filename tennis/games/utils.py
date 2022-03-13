@@ -1,14 +1,15 @@
 import csv
 from datetime import datetime
+from random import choice
 
 from django.contrib.auth.models import User
 
-from tennis.games.models import Scores, Player
+from .models import Scores, Player
 
 
 def parsing_tennis_rating_to_db():
-    """ Function fill players to base"""
-    with open('../player_overviews_unindexed.csv') as f:
+    """ Function fill players to base from csv"""
+    with open('./player_overviews_unindexed.csv') as f:
         f.readline()
         spamreader = csv.reader(f, delimiter=',', quotechar='"')
         for s in spamreader:
@@ -38,8 +39,17 @@ def parsing_tennis_rating_to_db():
 
 
 def parsing_scores_to_db():
-    with open('../scores.csv') as sc:
+    """ Finc fill scores to Scores model from csv"""
+    with open('./scores.csv') as sc:
         for s in sc.readlines():
             if not Scores.objects.filter(score=s.rstrip('\n')).exists():
                 score = Scores.objects.create(score=s.rstrip('\n'))
                 score.save()
+
+
+def who_winner_lottery(p1, p2):
+    """Simple implementation of lottery"""
+    if choice((False, True)):
+        return p1, p2
+    else:
+        return p2, p1
