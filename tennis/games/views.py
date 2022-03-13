@@ -1,17 +1,17 @@
-from datetime import datetime
 import csv
+from datetime import datetime
 from random import choice
 
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
 from django.db.models import Q
-from django.utils.timezone import now
+from django.shortcuts import render, redirect
+from django.views.generic.list import BaseListView
 
 from .models import Game, Player, Scores
 
 
 def parsing_tennis_rating():
-    """ Fuction fill players to base"""
+    """ Function fill players to base"""
     with open('../player_overviews_unindexed.csv') as f:
         f.readline()
         spamreader = csv.reader(f, delimiter=',', quotechar='"')
@@ -35,7 +35,8 @@ def parsing_tennis_rating():
                 player = Player.objects.create(
                     user=user,
                     birth_date=birth_date,
-                    country=country
+                    country=country,
+                    pro=True
                 )
                 player.save()
     pass
@@ -90,3 +91,5 @@ def add_game(request):
         )
         game.save()
     return redirect('index')
+
+BaseListView
