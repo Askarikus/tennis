@@ -12,11 +12,17 @@ from .utils import who_winner_lottery
 
 
 def index(request):
+    if not request.user.pk:
+        return redirect('login')
     games = Game.objects.filter(
         Q(p1__user=request.user) | Q(p2__user=request.user)
     ).order_by('-date')
     context = {'games': games}
     return render(request, 'games/index.html', context)
+
+
+def login(request):
+    return render(request, 'account/login.html')
 
 
 def add_game(request):

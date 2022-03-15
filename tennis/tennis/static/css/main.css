@@ -25,6 +25,11 @@
     outline: 1px solid black;
 }
 
+.login{
+    padding: 5px;
+    outline: 1px dotted black;
+}
+
 .my-table-head{
     outline: 1px dotted black;
 }
