@@ -4,39 +4,45 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
-      }
+}
 
 @media (min-width: 768px) {
-.bd-placeholder-img-lg {
-  font-size: 3.5rem;
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
 }
-}
-
 
 .showPasswordToggle{
-cursor:pointer;
-transition:all;
+    cursor:pointer;
+    transition:all;
 }
 
-
 .showPasswordToggle:hover{
-transform:scale(1.2);
+    transform:scale(1.2);
+}
+
+.base_main_menu{
+    outline: 1px solid black;
+}
+
+.my-table-head{
+    outline: 1px dotted black;
 }
 
 .hard{
-    background-color: #3333cc;
+    background-color: rgb(71 116 171);
 }
 
 .clay{
-    background-color: #e7860e;
+    background-color: rgb(219 123 63);
 }
 
 .carpet{
-    background-color: #9fb71b;
+    background-color: rgb(139 197 57);
 }
 
 .grass{
-    background-color: #33b71b;
+    background-color: rgb(118 194 128);
 }
 
 

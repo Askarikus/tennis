@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'crispy_forms',
+    'django_extensions',
 
     # 'django.contrib.sites',
     'allauth',
@@ -27,6 +28,9 @@ INSTALLED_APPS = [
 
     'games',
 ]
+
+# use default shell_plus in ipython
+SHELL_PLUS = "ipython"
 
 # allauth stuff
 # SITE_ID = 1

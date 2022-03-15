@@ -3,26 +3,26 @@
 <div class="table-responsive">
     <table class="table table-sm table-info" style="border-collapse:collapse">
         <thead>
-        <tr class="table-primary">
-            <th scope="col">#</th>
+        <tr class="table-primary my-table-head">
+<!--            <th scope="col">#</th>-->
             <th scope="col">Player 1</th>
             <th scope="col">Player 2</th>
             <th scope="col">Result </th>
             <th scope="col">Date </th>
             <th scope="col">Surface </th>
-            <th scope="col">Description </th>
+<!--            <th scope="col">Description </th>-->
         </tr>
         </thead>
         <tbody>
         {% for game in games %}
-        <tr class="{{ game.surface }}">
-            <td>{{ game.pk }}</td>
+        <tr >
+<!--            <td>{{ game.pk }}</td>-->
             <td>{{ game.p1 }}</td>
             <td>{{ game.p2 }}</td>
             <td>{{ game.result }}</td>
             <td>{{ game.date }}</td>
-            <td>{{ game.surface }}</td>
-            <td>{{ game.description }}</td>
+            <td class="{{ game.surface }}" >{{ game.surface }}</td>
+<!--            <td>{{ game.description }}</td>-->
         </tr>
         {% endfor %}
         </tbody>

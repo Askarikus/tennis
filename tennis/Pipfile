@@ -9,6 +9,8 @@ psycopg2 = "*"
 requests = "*"
 django-allauth = "*"
 django-crispy-forms = "*"
+django-extensions = "*"
+ipython = "*"
 
 [dev-packages]
 
