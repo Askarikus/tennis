@@ -1,7 +1,7 @@
 {% load static %}
 {% block content %}
 <div class="table-responsive">
-    <table class="table table-sm table-info" style="border-collapse:collapse">
+    <table class="table table-sm table-info table-bordered" >
         <thead>
         <tr class="table-primary my-table-head">
 <!--            <th scope="col">#</th>-->
@@ -10,6 +10,7 @@
             <th scope="col">Result </th>
             <th scope="col">Date </th>
             <th scope="col">Surface </th>
+            <th></th>
 <!--            <th scope="col">Description </th>-->
         </tr>
         </thead>
@@ -23,6 +24,11 @@
             <td>{{ game.date }}</td>
             <td class="{{ game.surface }}" >{{ game.surface }}</td>
 <!--            <td>{{ game.description }}</td>-->
+            <td>
+              <a href="{% url 'delete_game' game.id  %}"
+                class="btn-warning btn-sm btn-link">Delete
+              </a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

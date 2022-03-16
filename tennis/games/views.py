@@ -25,6 +25,10 @@ def login(request):
     return render(request, 'account/login.html')
 
 
+def logout(request):
+    return render(request, 'account/logout.html')
+
+
 def add_game(request):
     if request.method == 'POST':
         surfaces = (
@@ -46,6 +50,12 @@ def add_game(request):
             result=choice_score,
             surface=surface
         )
+    return redirect('index')
+
+
+def delete_game(request, id):
+    game = Game.objects.get(pk=id)
+    game.delete()
     return redirect('index')
 
 
