@@ -1,7 +1,8 @@
-import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+from .additional import *
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -32,46 +33,12 @@ INSTALLED_APPS = [
 # use default shell_plus in ipython
 SHELL_PLUS = "ipython"
 
-# allauth stuff
 # SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-
-LOGIN_REDIRECT_URL = "/"
-
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
-ACCOUNT_EMAIL_VERIFICATION = "required"
-ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
-ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
-ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
-ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
-ACCOUNT_SESSION_REMEMBER = None
-ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
-ACCOUNT_USERNAME_BLACKLIST = []
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_MIN_LENGTH = 1
-SOCIALACCOUNT_AUTO_SIGNUP = True
-ACCOUNT_LOGOUT_REDIRECT_URL = "/accounts/login"
-ACCOUNT_LOGOUT_ON_GET = True
-
-SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        'SCOPE': [
-            'user',
-            'repo',
-            'read:org',
-        ],
-    }
-}
-
-# end allauth
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -148,18 +115,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'tennis', 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# email stuff
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-EMAIL_PORT = int(os.environ.get('EMAIL_PORT'))
-
-
