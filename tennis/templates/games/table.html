@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for game in games %}
+        {% for game in object_list %}
         <tr >
 <!--            <td>{{ game.pk }}</td>-->
             <td>{{ game.p1 }}</td>
@@ -33,5 +33,6 @@
         {% endfor %}
         </tbody>
     </table>
+    {% include 'partials/_pagination.html' %}
 </div>
 {% endblock %}
