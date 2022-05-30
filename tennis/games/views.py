@@ -2,6 +2,7 @@ from random import choice
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import render, redirect
@@ -121,3 +122,30 @@ def profile(request):
         'user_form': user_form,
         'player_form': player_form
     })
+
+def add_user(request):
+    print('Hello from add_user')
+    # if request.method == 'POST':
+    #     if not User.objects.filter(username=username).exists():
+    #         first_name = s[2]
+    #         last_name = s[3]
+    #         user = User.objects.create(
+    #             username=username,
+    #             first_name=first_name,
+    #             last_name=last_name
+    #         )
+    #         user.save()
+    #         birth_date = None
+    #         country = ''
+    #         if s[8]:
+    #             birth_date = datetime.strptime(s[8], '%Y.%m.%d')
+    #         if s[7]:
+    #             country = s[7].split(',')[-1]
+    #         player = Player.objects.create(
+    #             user=user,
+    #             birth_date=birth_date,
+    #             country=country,
+    #             pro=True
+    #         )
+    #         player.save()
+    return render(request, 'account/signup.html')

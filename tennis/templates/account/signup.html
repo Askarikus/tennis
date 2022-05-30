@@ -16,8 +16,8 @@
                             {% endblocktrans %}
                         </p>
                     </div>
-                    <form class="form-group" id="signup_form" method="post"
-                          action="{% url 'account_signup' %}">
+                    <form action="{% url 'add_user' %}" method="POST"
+                          class="form-group" >
                         {% csrf_token %}
                         {% for f in form %}
                             <div class="form-group">
