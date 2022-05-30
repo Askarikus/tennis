@@ -44,7 +44,7 @@ def index(request):
     games = Game.objects.filter(
         Q(p1__user=request.user) | Q(p2__user=request.user)
     ).order_by('-date')
-    paginator = Paginator(games, 10)
+    paginator = Paginator(games, 24)
     page_number = request.GET.get("page")
     try:
         page = paginator.page(page_number)
