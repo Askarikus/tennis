@@ -81,17 +81,19 @@ def add_game(request):
         )
         scores = Scores.objects.all()
         choice_score = choice(scores).score
-        gamer = request.user.player
-        players = Player.objects.exclude(user=request.user)
-        choice_player = choice(players)
-        gamer, choice_player = who_winner_lottery(gamer, choice_player)
-        surface = choice(surfaces)
-        game = Game.objects.create(
-            p1=gamer,
-            p2=choice_player,
-            result=choice_score,
-            surface=surface
-        )
+        user = request.user
+        if user.first_name:
+            gamer = user.player
+            players = Player.objects.exclude(user=user)
+            choice_player = choice(players)
+            gamer, choice_player = who_winner_lottery(gamer, choice_player)
+            surface = choice(surfaces)
+            game = Game.objects.create(
+                p1=gamer,
+                p2=choice_player,
+                result=choice_score,
+                surface=surface
+            )
     return redirect('index')
 
 
