@@ -13,31 +13,34 @@ from .forms import UserForm, PlayerForm
 from .models import Game, Player, Scores
 from .utils import who_winner_lottery
 
-class index_class(ListView):
-    model = Game
-    template_name = 'games/index.html'
-    paginator_class = Paginator
-    paginate_by = 10
-    def get(self, request, *args, **kwargs):
-        games = Game.objects.filter(
-            Q(p1__user=request.user) | Q(p2__user=request.user)
-        ).order_by('-date')
-        paginator = Paginator(games, 10)
-        page_number = request.GET.get("page")
-        try:
-            page = paginator.page(page_number)
-        except PageNotAnInteger:
-            # If page is not an integer, show first page.
-            page = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range, show last existing page.
-            page = paginator.page(paginator.num_pages)
 
-        context = {
-            'games': games,
-            # "object_list": page
-        }
-        return render(request, self.template_name, context)
+# class index_class(ListView):
+#     model = Game
+#     template_name = 'games/index.html'
+#     paginator_class = Paginator
+#     paginate_by = 10
+#
+#     def get(self, request, *args, **kwargs):
+#         games = Game.objects.filter(
+#             Q(p1__user=request.user) | Q(p2__user=request.user)
+#         ).order_by('-date')
+#         paginator = Paginator(games, 10)
+#         page_number = request.GET.get("page")
+#         try:
+#             page = paginator.page(page_number)
+#         except PageNotAnInteger:
+#             # If page is not an integer, show first page.
+#             page = paginator.page(1)
+#         except EmptyPage:
+#             # If page is out of range, show last existing page.
+#             page = paginator.page(paginator.num_pages)
+#
+#         context = {
+#             'games': games,
+#             # "object_list": page
+#         }
+#         return render(request, self.template_name, context)
+
 
 def index(request):
     if not request.user.pk:
@@ -125,6 +128,7 @@ def profile(request):
         'player_form': player_form
     })
 
+
 def add_user(request):
     if request.method == 'POST':
         if not User.objects.filter(email=request.POST['email']).exists():
@@ -135,6 +139,5 @@ def add_user(request):
             )
             user.set_password('123')
             user.save()
-
 
     return render(request, 'account/signup.html')
