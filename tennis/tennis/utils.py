@@ -37,15 +37,15 @@ from datetime import datetime
 from random import choice
 
 
-def scores():
-    with open('../scores_tennis_matches.txt', 'r') as f,\
-                 open('../scores.csv', 'w') as scores_m:
-        set_of_scores = set(f.readlines())
-        for elem in set_of_scores:
-            print(elem.rstrip('\n'), file=scores_m)
+# def scores():
+#     with open('../scores_tennis_matches.txt', 'r') as f,\
+#                  open('../scores.csv', 'w') as scores_m:
+#         set_of_scores = set(f.readlines())
+#         for elem in set_of_scores:
+#             print(elem.rstrip('\n'), file=scores_m)
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # parsing_tennis_rating()
-    scores()
+    # scores()
