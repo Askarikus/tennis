@@ -12,6 +12,7 @@ django-crispy-forms = "*"
 django-extensions = "*"
 ipython = "*"
 psycopg2-binary = "*"
+gunicorn = "*"
 
 [dev-packages]
 

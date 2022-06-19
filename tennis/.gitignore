@@ -2,3 +2,5 @@
 /.env
 /tennis/games/fixtures/users_players.json
 .idea/
+/Helper.txt
+/.env.dev
